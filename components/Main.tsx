@@ -15,21 +15,16 @@ const Main = () => {
     return (
         <>
             <div className="w-full h-screen text-center">
-                <div className='max-w-[1200px] w-full h-full mx-auto p-2 flex justify-center md:items-center'>
-                    <div className="mt-40 md:mt-0 lg:mt-32">
+                <div className='max-w-[1200px] w-full h-full mx-auto p-2 flex justify-center'>
+                    <div className="mt-40 md:mt-0 lg:mt-40">
                         <p className="uppercase text-sm tracking-widest text-white">Let&apos;s do something great today.</p>
                         <h1 className="mt-2">Hi, I&apos;m <span className="font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Javahound</span><br />
                                              A Full Stack Web Dev</h1>
                         <div className="block w-full md:flex items-center">
                             <div className="mt-8 mb-4 px-4 xs:px-8 max-w-[960px] md:w-[50%] lg:w-[60%]">
-                            <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='960' height='540' />
+                            <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='960' height='540' className="rounded-3xl" />
                             </div>
-                            <div className="md:px-4 max-w-[960px] sm:w-full md:w-[50%] lg:w-[40%]">
-                                <p className="text-center lg:px-2">Me? I&apos;m a gay doggo on the interwebs :3 <br />
-                                Part time Femboy I guess <br />
-                                Gay {age} | They / Them | Taken <br />
-                                Java, Web, C#, TypeScript Dev</p>
-                            </div>
+                            
                         </div>
                         <div>
                             <p className="mt-4 max-w-[75%] m-auto">I&apos;m a Web Dev, Software Engineer and (VR) Content Creator, at the moment focusing on building web experiences as well as making VR-Videos on Tiktok.<br />  </p>
@@ -61,8 +56,21 @@ const Main = () => {
                             </div>
                         </div>
                         <div>
-                            <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-12 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>What I do</p>
-                            <p>At the moment I&apos;m working for a small company, developing / expanding a custom software solution for Customer Relation Management (CRM), as well as a suite of tools for energy service providers</p>
+                            <p id="about" className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>Who I am</p>
+                            <div className="md:px-4 max-w-[960px] sm:w-full md:w-[50%] lg:w-[40%] mx-auto">
+                                <p className="text-center lg:px-2 mt-4">Me? I&apos;m a gay doggo on the interwebs :3 <br />
+                                I guess you could call me Part time Femboy<br />
+                                Demi / Gay | {age} | <span className="font-bold">They</span> / <span className="font-bold">Them</span> | Taken <br />
+                                Java, Web, C#, TypeScript Dev</p>
+                            </div>
+                            <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>What I do</p>
+                            <p className="mt-4">At the moment I&apos;m working for a small company, developing / expanding a custom software solution for Customer Relation Management (CRM), as well as a suite of tools for energy service providers.
+                            <br />
+                            <br />
+                            Besides that I&apos;m also creating small tools and websites for myself. I plan on doing bigger projects in the future that are actually useful. Looking past the software / web development sector I also create videos on <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank" className="text-blue-300">my Tiktok</a></Link> profile. There also are plans to "revive" my YouTube channel as well.</p>
+                        </div>
+                        <div className="mt-20">
+                            <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>My Latest Projects</p>
                         </div>
                     </div>
                 </div>
