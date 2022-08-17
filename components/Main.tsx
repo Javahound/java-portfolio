@@ -1,5 +1,8 @@
 import React from "react"
 import Image from "next/image"
+import { FaGithub, FaGrinWink, FaMailBulk, FaTelegram, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa'
+import Link from "next/link"
+import TwitchStatus from "./Twitch-Status"
 
 const Main = () => {
     var date1 = new Date("2000-8-14")
@@ -12,16 +15,55 @@ const Main = () => {
     return (
         <>
             <div className="w-full h-screen text-center">
-                <div className='max-w-[1200px] w-full h-full mx-auto p-2 flex justify-center items-center'>
-                    <div>
+                <div className='max-w-[1200px] w-full h-full mx-auto p-2 flex justify-center md:items-center'>
+                    <div className="mt-40 md:mt-0 lg:mt-32">
                         <p className="uppercase text-sm tracking-widest text-white">Let&apos;s do something great today.</p>
                         <h1 className="mt-2">Hi, I&apos;m <span className="font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Javahound</span><br />
                                              A Full Stack Web Dev</h1>
-                        <div className="mt-8 mb-6 px-12 max-w-[960px]">
-                        <Image src="/avatarPicFull.png" alt="A picture of my VRC Avatar" width='960' height='540' />
+                        <div className="block w-full md:flex items-center">
+                            <div className="mt-8 mb-4 px-4 xs:px-8 max-w-[960px] md:w-[50%] lg:w-[60%]">
+                            <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='960' height='540' />
+                            </div>
+                            <div className="md:px-4 max-w-[960px] sm:w-full md:w-[50%] lg:w-[40%]">
+                                <p className="text-center lg:px-2">Me? I&apos;m a gay doggo on the interwebs :3 <br />
+                                Part time Femboy I guess <br />
+                                Gay {age} | They / Them | Taken <br />
+                                Java, Web, C#, TypeScript Dev</p>
+                            </div>
                         </div>
-                        <p className="mt-4 max-w-[75%] m-auto">Hi. I&apos;m a {age} old Web Dev and (VR) Content Creator <br /> 
-                                                               </p>
+                        <div>
+                            <p className="mt-4 max-w-[75%] m-auto">I&apos;m a Web Dev, Software Engineer and (VR) Content Creator, at the moment focusing on building web experiences as well as making VR-Videos on Tiktok.<br />  </p>
+                        </div>
+                        <br />
+                        <TwitchStatus />
+                        <div className='pt-20'>
+                            <p className='font-bold tracking-wider text-center text-transparent text-4xl bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>Let&apos;s Connect</p>
+                            <p className="mt-2">Via my socials down below. Or maybe just take a look regardless. <br /> It&apos;d be much apprechiated. 😜</p>
+                            <div className='flex items-center justify-between mt-6 mx-auto w-[75%] sm:w-[55%] md:w-[50%] lg:w-[40%] xl:w-[35%] sm:px-12 '>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://github.com/javahound" passHref><a target="_blank"><FaGithub /></a></Link>
+                                </div>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://t.me/javahound" passHref><a target="_blank"><FaTelegram /></a></Link>
+                                </div>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://www.youtube.com/channel/UCSVnpu3ySkQsOQPb50qrQyg" passHref><a target="_blank"><FaYoutube /></a></Link>
+                                </div>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://twitter.com/justjavahound" passHref><a target="_blank"><FaTwitter /></a></Link>
+                                </div>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank"><FaTiktok /></a></Link>
+                                </div>
+                                <div className='rounded-full bg-white/10 p-3 cursor-pointer hover:scale-110 ease-in duration-150'>
+                                    <Link href="https://www.twitch.tv/JustJavahound" passHref><a target="_blank"><FaTwitch /></a></Link>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-12 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>What I do</p>
+                            <p>At the moment I&apos;m working for a small company, developing / expanding a custom software solution for Customer Relation Management (CRM), as well as a suite of tools for energy service providers</p>
+                        </div>
                     </div>
                 </div>
             </div>
