@@ -21,7 +21,7 @@ const Main = () => {
                         <h1 className="mt-2">Hi, I&apos;m <span className="font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Javahound</span><br />
                                              A Full Stack Web Dev</h1>
                         <div className="block w-full md:flex items-center">
-                            <div className="mt-8 mb-4 px-4 xs:px-8 max-w-[960px] md:w-[50%] lg:w-[60%]">
+                            <div className="mt-8 mb-4 px-4 xs:px-8 max-w-[960px] mx-auto">
                             <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='960' height='540' className="rounded-3xl" />
                             </div>
                             
