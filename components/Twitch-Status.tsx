@@ -43,7 +43,7 @@ export default function TwitchStatus() {
                     </div>
                 ) : (
                     <div className="text-red-500 mt-20">
-                        [CHANNEL NOT LIVE: Twitch Status "isLive" is false...]<br />
+                        [CHANNEL NOT LIVE: Twitch Status &quot;isLive&quot; is false...]<br />
                         [NOT LOADING VIDEO PLAYER]<br />
                         (remove from production build)
                     </div>

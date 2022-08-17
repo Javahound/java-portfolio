@@ -67,7 +67,7 @@ const Main = () => {
                             <p className="mt-4">At the moment I&apos;m working for a small company, developing / expanding a custom software solution for Customer Relation Management (CRM), as well as a suite of tools for energy service providers.
                             <br />
                             <br />
-                            Besides that I&apos;m also creating small tools and websites for myself. I plan on doing bigger projects in the future that are actually useful. Looking past the software / web development sector I also create videos on <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank" className="text-blue-300">my Tiktok</a></Link> profile. There also are plans to "revive" my YouTube channel as well.</p>
+                            Besides that I&apos;m also creating small tools and websites for myself. I plan on doing bigger projects in the future that are actually useful. Looking past the software / web development sector I also create videos on <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank" className="text-blue-300">my Tiktok</a></Link> profile. There also are plans to &quot;revive&quot; my YouTube channel as well.</p>
                         </div>
                         <div className="mt-20">
                             <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>My Latest Projects</p>
