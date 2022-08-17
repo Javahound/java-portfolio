@@ -34,7 +34,7 @@ export default function TwitchStatus() {
                 {isLive ? (
                     
                     <div className="live">
-                        <p className='font-bold tracking-normal text-center text-transparent text-4xl bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] mb-4'>I&apos;m Live on Twitch</p>
+                        <p className='font-bold mt-20 tracking-normal text-center text-transparent text-4xl bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] mb-4'>I&apos;m Live on Twitch</p>
                         <iframe
                             src="https://player.twitch.tv/?channel=justjavahound&parent=localhost"
                             allowFullScreen
@@ -42,9 +42,10 @@ export default function TwitchStatus() {
                         </iframe>
                     </div>
                 ) : (
-                    <div>
-                        [CHANNEL NOT LIVE: Twitch Status "isLive" is false...] <br />
-                        [NOT LOADING] (remove from production build)
+                    <div className="text-red-500 mt-20">
+                        [CHANNEL NOT LIVE: Twitch Status "isLive" is false...]<br />
+                        [NOT LOADING VIDEO PLAYER]<br />
+                        (remove from production build)
                     </div>
                 )}
             </div>

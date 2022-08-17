@@ -35,7 +35,7 @@ const Navbar = () => {
                         </Link>
                     </ul>
                     <div onClick={toggleNav} className='md:hidden hover:cursor-pointer'>
-                        <AiOutlineMenu size={25} />
+                        <AiOutlineMenu size={25} className="mr-2" />
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ const Navbar = () => {
                         <Link href='/'>
                             <li onClick={toggleNav} className='py-4 text-sm'>Home</li>
                         </Link>
-                        <Link href='/'>
+                        <Link href='/#about'>
                             <li onClick={toggleNav} className='py-4 text-sm'>About</li>
                         </Link>
                         <Link href='/'>
