@@ -3,7 +3,10 @@ import { getEnvironmentData } from "worker_threads"
 
 export default function TwitchStatus() { 
 
-    const [isLive, setIsLive] = useState(false)
+    var [isLive, setIsLive] = useState(false)
+    var streamerName = ""
+    streamerName = "justjavahound"
+    
 
     useEffect(() => {
         const getData = async () => {
@@ -17,16 +20,18 @@ export default function TwitchStatus() {
         getData()
         var interval = setInterval(() => {
             getData()
-        }, 60000)
+        }, 120000)
          interval
 
+         
+
         return () => {
-            // this now gets called when the component unmounts
+            
           };
 
     }, [])
 
-    
+    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost`
 
     return (
         <>
@@ -36,7 +41,7 @@ export default function TwitchStatus() {
                     <div className="live">
                         <p className='font-bold mt-20 tracking-normal text-center text-transparent text-4xl bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] mb-4'>I&apos;m Live on Twitch</p>
                         <iframe
-                            src="https://player.twitch.tv/?channel=justjavahound&parent=localhost"
+                            src={playerLink}
                             allowFullScreen
                             className="w-[90%] mx-auto aspect-video">
                         </iframe>
@@ -46,7 +51,8 @@ export default function TwitchStatus() {
                         [CHANNEL NOT LIVE: Twitch Status &quot;isLive&quot; is false...]<br />
                         [NOT LOADING VIDEO PLAYER]<br />
                         (remove from production build)
-                    </div>
+                    </div> 
+                    
                 )}
             </div>
         </>

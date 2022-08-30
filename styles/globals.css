@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply bg-[#2b2a33] text-white tracking-wide
+        @apply bg-[#22212b] text-white tracking-wide
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -29,5 +29,21 @@
     
     p {
         @apply lg:w-[75%] lg:mx-auto
+    }
+    .date-date-display {
+        background-color: #607d8b
+    }
+    
+    .datepicker-day-button:focus {
+        color: white !important;
+        background-color: #a2b0b6
+    }
+    .datepicker-date-display {
+        background-color: #607d8b
+    }
+    
+    .datepicker-day-button:focus {
+        color: white !important;
+        background-color: #a2b0b6
     }
 }

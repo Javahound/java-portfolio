@@ -3,6 +3,10 @@ import Image from "next/image"
 import { FaGithub, FaGrinWink, FaMailBulk, FaTelegram, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa'
 import Link from "next/link"
 import TwitchStatus from "./Twitch-Status"
+import ProjectContainer from "./ProjectContainer"
+import Heading from "./Heading"
+import CardTitle from "./Title"
+import ProjectWrapper from "./ProjectWrapper"
 
 const Main = () => {
     var date1 = new Date("2000-8-14")
@@ -70,7 +74,21 @@ const Main = () => {
                             Besides that I&apos;m also creating small tools and websites for myself. I plan on doing bigger projects in the future that are actually useful. Looking past the software / web development sector I also create videos on <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank" className="text-blue-300">my Tiktok</a></Link> profile. There also are plans to &quot;revive&quot; my YouTube channel as well.</p>
                         </div>
                         <div className="mt-20">
-                            <p className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>My Latest Projects</p>
+                            <Heading>My Latest Projects</Heading>
+                            <ProjectWrapper>
+                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
+                                        <CardTitle>Project XYZ</CardTitle>
+                                </ProjectContainer>
+                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
+                                        <CardTitle>Project XYZ</CardTitle>
+                                </ProjectContainer>
+                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
+                                        <CardTitle>Project XYZ</CardTitle>
+                                </ProjectContainer>
+                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFull.png" imgAlt="">
+                                    <CardTitle>All Projects</CardTitle>
+                                </ProjectContainer>
+                            </ProjectWrapper>
                         </div>
                     </div>
                 </div>
