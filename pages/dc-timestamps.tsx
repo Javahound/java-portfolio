@@ -1,4 +1,5 @@
-import React from "react"
+import { type } from "os"
+import React, { useEffect, useState } from "react"
 import Card from "../components/Card"
 
 var date = new Date()
@@ -7,7 +8,21 @@ var defaultValueTime = new Date(date).toISOString().split('T')[1].split('.')[0].
 
 
 
+
 const TimestampGenerator = ({ keywords, description }) => {
+    const [select,setSelect] = useState('relative')
+    var outPreview = "in 1 minute"
+
+    function updateOutputPreview() {
+        switch (select) {
+            case 'relative':
+                outPreview = "in 1 minute"
+                break;
+            case 'time_short':
+                outPreview = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+        }
+    }
+
     return (
         <>
         <meta name='keywords' content={keywords} />
@@ -21,23 +36,27 @@ const TimestampGenerator = ({ keywords, description }) => {
                                     <h1 className="mt-4 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Discord Title Generator</h1>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Date</p>
-                                        <input type="date" name="" id="d" data-date-format className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={defaultValueDate}/>
+                                        <input type="date" name="" id="date" data-date-format className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={defaultValueDate}/>
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Time</p>
-                                        <input type="time" name="" id="hm" className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl" defaultValue={defaultValueTime} />
+                                        <input type="time" name="" id="time" className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl" defaultValue={defaultValueTime} />
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Type</p>
-                                        <select name="type" id="type" className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid ">
+                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value)}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid ">
                                             <option value="time_short">Short Time</option>
                                             <option value="time_long">Long Time</option>
                                             <option value="date_short">Short Date</option>
                                             <option value="date_long">Long Date</option>
                                             <option value="date_long_time_short">Long Date + Short Time</option>
                                             <option value="date_long_day_time_short">Date + Day +  Time</option>
-                                            <option value="relative" selected>Relative</option>
+                                            <option value="relative" >Relative</option>
                                         </select>
+                                    </div>
+                                    <div className="flex my-2 mx-2">
+                                        <p className="text-left left w-full py-2 px-4">Output Preview</p>
+                                        <p id="outPreview" className="right bg-[#40444b] min-w-fit py-2 px-2 rounded-md">{outPreview}</p>
                                     </div>
                                     <h2 className="mt-12 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Output</h2>
                                     <div className="flex">
@@ -54,17 +73,8 @@ const TimestampGenerator = ({ keywords, description }) => {
     )
 }
 
-// const dateInput = document.getElementById('d');
-// const timeInput = document.getElementById('hm');
-// const typeInput = document.getElementById('t');
-// const output = document.getElementById('code');
-// const copy = document.getElementById('copy');
-// const current = document.getElementById('current');
-// const preview = document.getElementById('preview');
 
-// dateInput.onchange = updateOutput;
-// timeInput.onchange = updateOutput;
-// typeInput.onchange = updateOutput;
+
 
 
 const typeFormats = {
