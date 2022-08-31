@@ -1,30 +1,32 @@
-import { type } from "os"
 import React, { useEffect, useState } from "react"
 import Card from "../components/Card"
+import Script from 'next/script'
 
 var date = new Date()
 var defaultValueDate = new Date(date).toISOString().split('T')[0]
 var defaultValueTime = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -3)
-
-
-
 
 const TimestampGenerator = ({ keywords, description }) => {
     const [select,setSelect] = useState('relative')
     var outPreview = "in 1 minute"
 
     function updateOutputPreview() {
-        switch (select) {
-            case 'relative':
-                outPreview = "in 1 minute"
-                break;
-            case 'time_short':
-                outPreview = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -3)
-        }
+        if (select == 'relative') {
+            outPreview = "in 1 minute"
+        } else if (select == 'time_short') {
+            outPreview = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+        } else {}
     }
+
+var app
 
     return (
         <>
+        <Script>
+            function a() {
+                app = document.getElementById("outPreview").innerHTML({outPreview});
+            }
+        </Script>
         <meta name='keywords' content={keywords} />
         <meta name='description' content={description} />
         <div className="min-w-full h-screen text-center">
@@ -44,14 +46,14 @@ const TimestampGenerator = ({ keywords, description }) => {
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Type</p>
-                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value)}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid ">
+                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); updateOutputPreview()}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid ">
                                             <option value="time_short">Short Time</option>
                                             <option value="time_long">Long Time</option>
                                             <option value="date_short">Short Date</option>
                                             <option value="date_long">Long Date</option>
                                             <option value="date_long_time_short">Long Date + Short Time</option>
                                             <option value="date_long_day_time_short">Date + Day +  Time</option>
-                                            <option value="relative" >Relative</option>
+                                            <option value="relative">Relative</option>
                                         </select>
                                     </div>
                                     <div className="flex my-2 mx-2">
