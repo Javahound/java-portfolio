@@ -10,7 +10,7 @@ var valueTime = new Date().toISOString().split('T')[1].split('.')[0].slice(0, -3
 var outPreview
 
 const TimestampGenerator = ({ keywords, description }) => {
-    var [select,setSelect] = useState('relative')
+    var [select,setSelect] = useState('R')
     var [timeIn, setTime] = useState(valueTime)
     var [dateIn, setDate] = useState(valueDate)
     var [output , setOutput] = useState('')
@@ -115,6 +115,7 @@ const TimestampGenerator = ({ keywords, description }) => {
     var shortTime = "time_short"
 
     var app
+    
     updateOutputPreview()
 
     return (
@@ -138,14 +139,14 @@ const TimestampGenerator = ({ keywords, description }) => {
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Type</p>
-                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutputPreview();}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid ">
+                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutputPreview();}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid " defaultValue='R'>
                                             <option value="t">Short Time</option>
                                             <option value="T">Long Time</option>
                                             <option value="d">Short Date</option>
                                             {/* <option value="D">Long Date</option>
                                             <option value="f">Long Date + Short Time</option>
                                             <option value="F">Date + Day + Time</option> */}
-                                            <option value="R">Relative</option>
+                                            <option value="R" selected>Relative</option>
                                         </select>
                                     </div>
                                     <div className="flex my-2 mx-2">
@@ -166,6 +167,7 @@ const TimestampGenerator = ({ keywords, description }) => {
         </>
     )
 }
+
 
 TimestampGenerator.defaultProps = {
     keywords: 'javahound, furry, vr, vrfurry, vr furry, content creation, web development, programming, discord, dc, timestamps, dc timestamps, discord timestamps, timestamp, dc timestamp, discord timestamp',
