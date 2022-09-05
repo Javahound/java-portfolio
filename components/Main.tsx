@@ -63,7 +63,7 @@ const Main = () => {
                             <p id="about" className='font-bold tracking-wider text-center text-transparent text-4xl mt-20 bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>Who I am</p>
                             <div className="md:px-4 max-w-[960px] sm:w-full md:w-[50%] lg:w-[40%] mx-auto">
                                 <p className="text-center lg:px-2 mt-4">Me? I&apos;m a gay doggo on the interwebs :3 <br />
-                                I guess I'm a Part time Femboy<br />
+                                I guess I&apos;m a Part time Femboy<br />
                                 Demi / Gay | {age} | <span className="font-bold">They</span> / <span className="font-bold">Them</span> | Taken <br />
                                 Java, Web, C#, TypeScript Dev</p>
                             </div>
