@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const get = buildGet(tokenJson.access_token)
 
-    const userJson = await get(`https://api.twitch.tv/helix/users?login=justjavahound`)
+    const userJson = await get(`https://api.twitch.tv/helix/users?login=lyonae`)
     const viewCount = userJson.data[0].view_count
     const userId = userJson.data[0].id
 
