@@ -4,9 +4,10 @@ import Card from "../components/Card"
 import Script from 'next/script'
 import Notiflix from "notiflix"
 
-var date = new Date()
+var startDate = new Date()
+var date = new Date(startDate.getTime() + 60000)
 var valueDate = new Date().toISOString().split('T')[0]
-var valueTime = new Date().toISOString().split('T')[1].split('.')[0].slice(0, -3)
+var valueTime = new Date(date.getTime() + 60000).toISOString().split('T')[1].split('.')[0].slice(0, -3)
 var outPreview
 
 const TimestampGenerator = ({ keywords, description }) => {
@@ -30,14 +31,12 @@ const TimestampGenerator = ({ keywords, description }) => {
     function changeSelect(e) {
         setSelect(e.target.value)
         select = e.target.value
-        updateOutputPreview()
         updateOutput()
     }
 
     function buildDate() {
         newDate = new Date(dateIn + "T" + timeIn + ":00")
         date = newDate.toISOString()
-        updateOutputPreview()
         updateOutput()
     }
 
@@ -63,6 +62,25 @@ const TimestampGenerator = ({ keywords, description }) => {
             var dateParts = parts[1] + "/" + parts[2] + "/" + parts[0]
             outPreview = dateParts
         }
+        if (select == 'D') {
+            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            var longDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
+            outPreview = longDate
+        }
+        if (select == 'f') {
+            var parts = dateIn.split('-')
+            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            var longDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
+            var dateTime = longDate + " at " + timeIn
+            outPreview = dateTime
+        }
+        if (select == 'F') {
+            var parts = dateIn.split('-')
+            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            var longDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
+            var dateTime = longDate + " at " + timeIn
+            outPreview = dateTime
+        }
         if (select == 'R') {
             var diff = automaticRelativeDifference(date)
             outPreview = "in " + diff.duration + " " + diff.unit
@@ -70,6 +88,7 @@ const TimestampGenerator = ({ keywords, description }) => {
     }   
 
     function updateOutput() {
+        updateOutputPreview()
         const test = new Date(dateIn + "T" + timeIn + ":00")
         const selectedDate = new Date(test.valueOf())
         const ts = selectedDate.getTime().toString()
@@ -131,21 +150,21 @@ const TimestampGenerator = ({ keywords, description }) => {
                                     <h1 className="mt-4 mb-8 text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Discord Timestamp Generator</h1>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Date</p>
-                                        <input type="date" name="" id="date" value={dateIn} data-date-format onChange={(e) => {setDate(e.target.value); changeDate(e); updateOutputPreview()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={valueDate}/>
+                                        <input type="date" name="" id="date" value={dateIn} data-date-format onChange={(e) => {setDate(e.target.value); changeDate(e); updateOutput()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={valueDate}/>
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Time (UTC prefill)</p>
-                                        <input type="time" name="" id="time" value={timeIn} onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutputPreview()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl" defaultValue={valueTime} />
+                                        <input type="time" name="" id="time" value={timeIn} onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl" defaultValue={valueTime} />
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Type</p>
-                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutputPreview();}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid " defaultValue='R'>
+                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutput();}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid " defaultValue='R'>
                                             <option value="t">Short Time</option>
                                             <option value="T">Long Time</option>
                                             <option value="d">Short Date</option>
-                                            {/* <option value="D">Long Date</option>
+                                            <option value="D">Long Date</option>
                                             <option value="f">Long Date + Short Time</option>
-                                            <option value="F">Date + Day + Time</option> */}
+                                            <option value="F">Date + Day + Time</option>
                                             <option value="R" selected>Relative</option>
                                         </select>
                                     </div>
