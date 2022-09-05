@@ -26,7 +26,7 @@ const Main = () => {
                                              A Full Stack Web Dev</h1>
                         <div className="block w-full md:flex items-center">
                             <div className="mt-8 mb-4 px-4 xs:px-8 max-w-[960px] md:w-[75%] md:mx-auto lg:w-[60%]">
-                                <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='960' height='540' className="rounded-3xl" />
+                                <Image src="/avatarPicFullB.png" alt="A picture of my VRC Avatar" width='650' height='365' className="rounded-3xl" />
 
                             </div>
                             
