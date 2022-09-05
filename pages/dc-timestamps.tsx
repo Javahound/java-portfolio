@@ -70,15 +70,13 @@ const TimestampGenerator = ({ keywords, description }) => {
         if (select == 'f') {
             var parts = dateIn.split('-')
             var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
-            var longDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
-            var dateTime = longDate + " at " + timeIn
+            var dateTime = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
             outPreview = dateTime
         }
         if (select == 'F') {
             var parts = dateIn.split('-')
             var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
-            var longDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
-            var dateTime = longDate + " at " + timeIn
+            var dateTime = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
             outPreview = dateTime
         }
         if (select == 'R') {
@@ -146,30 +144,30 @@ const TimestampGenerator = ({ keywords, description }) => {
                     <div className="mt-40 lg:mt-40">
                         <div className="bg-white/10 rounded-3xl py-8 hover:cursor-pointer ease-in duration-200">
                             <div className="block w-full md:flex items-center">
-                                <div className="-mt-4 mb-4 px-4 xs:px-8 max-w-[960px]">
-                                    <h1 className="mt-4 mb-8 text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Discord Timestamp Generator</h1>
+                                <div className="-mt-4 mb-4 px-4 xs:px-8 max-w-[1200px]">
+                                    <h1 className="mt-4 mb-8 text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Discord Timestamp Generator</h1>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Date</p>
-                                        <input type="date" name="" id="date" value={dateIn} data-date-format onChange={(e) => {setDate(e.target.value); changeDate(e); updateOutput()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={valueDate}/>
+                                        <input type="date" name="" id="date" value={dateIn} data-date-format onChange={(e) => {setDate(e.target.value); changeDate(e); updateOutput()}} className="right bg-[#22212b] w-[104%] py-2 px-2 rounded-3xl border-r-[.125rem] border-r-transparent border-solid" defaultValue={valueDate}/>
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Time (UTC prefill)</p>
-                                        <input type="time" name="" id="time" value={timeIn} onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput()}} className="right bg-[#22212b] w-[100%] py-2 px-2 rounded-3xl" defaultValue={valueTime} />
+                                        <input type="time" name="" id="time" value={timeIn} onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput()}} className="right bg-[#22212b] w-[104%] py-2 px-2 rounded-3xl" defaultValue={valueTime} />
                                     </div>
                                     <div className="flex my-2 mx-2">
                                         <p className="text-left left w-full py-2 px-4">Type</p>
-                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutput();}} className="right bg-[#22212b] w-[98%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid " defaultValue='R'>
+                                        <select name="type" id="type" value={select} onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutput();}} className="right bg-[#22212b] w-[102%] py-2 px-2 rounded-3xl border-r-[.5rem] border-r-transparent border-solid " defaultValue='R'>
                                             <option value="t">Short Time</option>
                                             <option value="T">Long Time</option>
                                             <option value="d">Short Date</option>
                                             <option value="D">Long Date</option>
-                                            <option value="f">Long Date + Short Time</option>
-                                            <option value="F">Date + Day + Time</option>
+                                            <option value="f">Long Date + Time</option>
+                                            <option value="F">Day + Date + Time</option>
                                             <option value="R" selected>Relative</option>
                                         </select>
                                     </div>
-                                    <div className="flex my-2 mx-2">
-                                        <p className="text-left left w-full py-2 px-4">Output Preview (24h)</p>
+                                    <div className="xsm:flex my-2 mx-2">
+                                        <p className="xsm:text-left left w-full py-2 px-4">Output Preview (24h)</p>
                                         <p id="outPreview" className="right bg-[#40444b] min-w-fit py-2 px-2 rounded-md">{outPreview}</p>
                                     </div>
                                     <h2 className="mt-12 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Output</h2>
