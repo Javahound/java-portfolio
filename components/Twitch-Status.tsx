@@ -31,7 +31,7 @@ export default function TwitchStatus() {
 
     }, [])
 
-    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost`
+    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost:3000`
 
     return (
         <>

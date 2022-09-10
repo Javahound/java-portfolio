@@ -77,8 +77,8 @@ const Main = () => {
                         <div className="mt-20">
                             <Heading>My Latest Projects</Heading>
                             <ProjectWrapper>
-                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
-                                        <CardTitle>Project XYZ</CardTitle>
+                                <ProjectContainer refLink="/projects" imgSrc="/timestampGen.png" imgAlt="">
+                                        <CardTitle>Discord Timestamp Generator</CardTitle>
                                 </ProjectContainer>
                                 <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
                                         <CardTitle>Project XYZ</CardTitle>

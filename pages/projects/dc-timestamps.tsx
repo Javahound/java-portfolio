@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import useState from 'react-usestateref'
-import Card from "../components/Card"
+import Card from "../../components/Card"
 import Script from 'next/script'
 import Notiflix from "notiflix"
 
