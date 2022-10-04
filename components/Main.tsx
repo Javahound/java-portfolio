@@ -7,6 +7,7 @@ import ProjectContainer from "./ProjectContainer"
 import Heading from "./Heading"
 import CardTitle from "./Title"
 import ProjectWrapper from "./ProjectWrapper"
+import CardTitleNoGradient from "./TitleNoGradient"
 
 const Main = () => {
     var date1 = new Date("2000-8-14")
@@ -35,7 +36,7 @@ const Main = () => {
                             <p className="mt-4 max-w-[75%] m-auto">I&apos;m a Web Dev, Software Engineer and (VR) Content Creator, at the moment focusing on building web experiences as well as making VR-Videos on Tiktok.<br />  </p>
                         </div>
                         <br />
-                        {/* <TwitchStatus /> */}
+                        <TwitchStatus />
                         <div className='pt-20'>
                             <p className='font-bold tracking-wider text-center text-transparent text-4xl bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]'>Let&apos;s Connect</p>
                             <p className="mt-2">Via my socials down below. Or maybe just take a look regardless. <br /> It&apos;d be much apprechiated. 😜</p>
@@ -74,17 +75,21 @@ const Main = () => {
                             <br />
                             Besides that I&apos;m also creating small tools and websites for myself. I plan on doing bigger projects in the future that are actually useful. Looking past the software / web development sector I also create videos on <Link href="https://www.tiktok.com/@javahound" passHref><a target="_blank" className="text-blue-300">my Tiktok</a></Link> profile. There also are plans to &quot;revive&quot; my YouTube channel as well.</p>
                         </div>
-                        <div className="mt-20">
-                            <Heading>My Latest Projects</Heading>
+                        <div className="mt-20 flex flex-row flex-wrap justify-center items-center">
+                            <div className="projectWrapper w-full mb-4">
+                                <Heading>My Latest Projects</Heading>
+                            </div>
                             <ProjectWrapper>
                                 <ProjectContainer refLink="/projects" imgSrc="/timestampGen.png" imgAlt="">
-                                        <CardTitle>Discord Timestamp Generator</CardTitle>
+                                        <CardTitleNoGradient>Discord Timestamp Gen</CardTitleNoGradient>
+                                        <p>Tired of miscommunication about events in Discord Chats? Try it with one simple Solution: <b>Dynamic Timestamps</b></p>
+                                </ProjectContainer>
+                                <ProjectContainer refLink="/projects/BeeFyne-Bot" imgSrc="/avatarPicFullB.png" imgAlt="">
+                                    <CardTitleNoGradient>🐝Fyne - Discord Bot</CardTitleNoGradient>
+                                    <p>This bot is still in <b>Active development</b>. It will do your general organizing and reaction role stuff for now.</p>
                                 </ProjectContainer>
                                 <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
-                                        <CardTitle>Project XYZ</CardTitle>
-                                </ProjectContainer>
-                                <ProjectContainer refLink="/projects" imgSrc="/avatarPicFullB.png" imgAlt="">
-                                        <CardTitle>Project XYZ</CardTitle>
+                                        <CardTitleNoGradient>Project XYZ</CardTitleNoGradient>
                                 </ProjectContainer>
                                 <ProjectContainer refLink="/projects" imgSrc="/avatarPicFull.png" imgAlt="">
                                     <CardTitle>All Projects</CardTitle>

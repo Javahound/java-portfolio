@@ -31,7 +31,7 @@ export default function TwitchStatus() {
 
     }, [])
 
-    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost:3000`
+    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost`
 
     return (
         <>
@@ -47,12 +47,7 @@ export default function TwitchStatus() {
                         </iframe>
                     </div>
                 ) : (
-                    <div className="text-red-500 mt-20">
-                        [CHANNEL NOT LIVE: Twitch Status &quot;isLive&quot; is false...]<br />
-                        [NOT LOADING VIDEO PLAYER]<br />
-                        (remove from production build)
-                    </div> 
-                    
+                    <p></p>
                 )}
             </div>
         </>

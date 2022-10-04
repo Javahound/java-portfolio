@@ -50,10 +50,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (streamJson.data.length <= 0) {
         res.status(600).json({message: "Stream is offline"})
     }
-    const isLive = streamJson.data[0].type === "live"
-    const viewerCount = streamJson.data[0].viewer_count
+    console.log(streamJson)
+    if (streamJson.hasOwnProperty("type")) {
+        var isLive = streamJson.data[0].type === "live"
+        var viewerCount = streamJson.data[0].viewer_count
+        if (isLive !== true) {
+            isLive === false
+            viewerCount = 0
+            res.status(200).json({ userId, streamJson, isLive, viewerCount })
+            console.log(isLive)
+            return
+        }
+        console.log(isLive)
 
-    res.status(200).json({ userId, streamJson, isLive, viewerCount })
+        res.status(200).json({ userId, streamJson, isLive, viewerCount })
+    }
   } else {
     res.setHeader("Allow", "GET")
     res.status(405).json({ message: "Method not allowed" })
