@@ -4,18 +4,22 @@ import Card from "../../components/Card"
 import Script from 'next/script'
 import Notiflix from "notiflix"
 
-var startDate = new Date()
+var localDate = new Date()
+var timeDiff = localDate.getTimezoneOffset()
+var startDate = new Date(localDate.getTime())
+var timeField = new Date(localDate.getTime() - (timeDiff * 60 * 1000))
 var date = new Date(startDate.getTime() + 60000)
 var valueDate = new Date().toISOString().split('T')[0]
-var valueTime = new Date(date.getTime() + 60000).toISOString().split('T')[1].split('.')[0].slice(0, -3)
-var outPreview
+var valueTime = new Date(timeField.getTime() + 60000).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+var outPreview = "in 1 minute"
 
 const TimestampGenerator = ({ keywords, description }) => {
-    var [select,setSelect] = useState('R')
-    var [timeIn, setTime] = useState(valueTime)
-    var [dateIn, setDate] = useState(valueDate)
-    var [output , setOutput] = useState('')
+
     var result
+    var [select, setSelect] = useState('R')
+    var [timeIn, setTime]   = useState(valueTime)
+    var [dateIn, setDate]   = useState(valueDate)
+    var [output, setOutput] = useState(result)
 
     var newDate
     function changeTime(e) {
@@ -31,7 +35,7 @@ const TimestampGenerator = ({ keywords, description }) => {
     function changeSelect(e) {
         setSelect(e.target.value)
         select = e.target.value
-        updateOutput()
+        buildDate()
     }
 
     function buildDate() {
@@ -99,9 +103,15 @@ const TimestampGenerator = ({ keywords, description }) => {
         const selectedDate = new Date(test.valueOf())
         const ts = selectedDate.getTime().toString()
         result = `<t:${ts.substring(0, ts.length - 3)}:${select}>`
-        setOutput(result)
         navigator.clipboard.writeText(result.toString())
         Notiflix.Notify.success('Copied to clipboard.')
+    }
+
+    function cp() {
+        const test = new Date(dateIn + "T" + timeIn + ":00")
+        const selectedDate = new Date(test.valueOf())
+        const ts = selectedDate.getTime().toString()
+        result = `<t:${ts.substring(0, ts.length - 3)}:${select}>`
     }
 
     function automaticRelativeDifference(valueDate) {
@@ -131,8 +141,6 @@ const TimestampGenerator = ({ keywords, description }) => {
 
     var shortTime = "time_short"
 
-    var app
-    
     updateOutputPreview()
 
     return (
@@ -172,7 +180,7 @@ const TimestampGenerator = ({ keywords, description }) => {
                                     </div>
                                     <h2 className="mt-12 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Output</h2>
                                     <div className="flex">
-                                        <input type="text" value={output} name="" id="" className="right bg-[#22212b] w-[70%] py-2 px-4 rounded-3xl mx-auto" />
+                                        <input type="text" onLoad={updateOutput} placeholder="Output" value={output} name="" id="" className="right bg-[#22212b] w-[70%] py-2 px-4 rounded-3xl mx-auto" />
                                         <button className="w-[20%] shadow-transparent mx-auto bg-gradient-to-r from-[#4856a8] to-[#8b5cb8]" onClick={copy}>Copy</button>
                                     </div>
                                 </div> 
@@ -183,7 +191,9 @@ const TimestampGenerator = ({ keywords, description }) => {
             </div>
         </>
     )
+
 }
+
 
 
 TimestampGenerator.defaultProps = {
