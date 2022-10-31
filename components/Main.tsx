@@ -33,6 +33,9 @@ const Main = () => {
                             
                         </div>
                         <div>
+                            <h3>This is still heavily WIP. More content and polishing will be done later 😅</h3>
+                        </div>
+                        <div>
                             <p className="mt-4 max-w-[75%] m-auto">I&apos;m a Web Dev, Software Engineer and (VR) Content Creator, at the moment focusing on building web experiences as well as making VR-Videos on Tiktok.<br />  </p>
                         </div>
                         <br />
