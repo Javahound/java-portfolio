@@ -1,5 +1,6 @@
 # About this project
 This is the Next.js Project of [my website](https://javahound.site).
+Disclaimer: The site will be reworked in the near future. Nothing is final over there 😅
 
 ## Next.js Boilerplate
 
