@@ -1,49 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html,
+body {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
 
-@layer base {
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.heightFull {
+    height: 100vh;
+}
+
+.gradientText {
+    --tw-gradient-from: #576ad2;
+    --tw-gradient-to: #b075e7;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: transparent;
+    font-size: 1.75rem;
+    line-height: 1.9rem;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    right: -1000px;
+    overflow-x: hidden;
+    z-index: -2;
+    opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
     body {
-        @apply bg-[#22212b] text-white tracking-wide
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-bold
-    }
-
-    h1 {
-        @apply text-4xl sm:text-5xl md:text-6xl
-    }
-
-    h2 {
-        @apply text-3xl sm:text-4xl
-    }
-
-    li {
-        @apply cursor-pointer
-    }
-
-    button {
-         @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#29278e] to-[#332045] text-white
-    }
-    
-    p {
-        @apply lg:w-[75%] lg:mx-auto
-    }
-    .date-date-display {
-        background-color: #607d8b
-    }
-    
-    .datepicker-day-button:focus {
-        color: white !important;
-        background-color: #a2b0b6
-    }
-    .datepicker-date-display {
-        background-color: #607d8b
-    }
-    
-    .datepicker-day-button:focus {
-        color: white !important;
-        background-color: #a2b0b6
+        color: white;
+        background: black;
     }
 }

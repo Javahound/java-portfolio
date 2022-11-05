@@ -1,0 +1,205 @@
+nav.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1d1d1d88;
+    height: 10%;
+    max-height: 75px;
+    width: 100%;
+    padding: 0 25px;
+}
+
+div.flex {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+
+.navLogo {
+    border-radius: 100%;
+}
+
+.openMenu {
+    margin-top: 10px;
+}
+
+.openMenu:hover {
+    cursor: pointer;
+}
+
+.linksOpened {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 85%;
+    height: 100vh;
+    transition: 500ms ease-in;
+    background-color: #2b2f4f88;
+    padding: 1.5rem 2.5rem;
+    z-index: 1;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+}
+
+.linksOpenedBG {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: 500ms ease-in;
+    background-color: #0008;
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+.linksClosed {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 85%;
+    height: 100vh;
+    padding: 2.5rem;
+    transition: 500ms ease-in;
+    backdrop-filter: blur(0px);
+    opacity: 0;
+}
+
+.linksClosedBG {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000;
+    transition: 500ms ease-in;
+    pointer-events: none;
+}
+
+.linkMenuHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuCloseBtn {
+    border-radius: 100%;
+    background-color: #fff4;
+    padding: 6px 10px;
+}
+
+.menuCloseBtn svg {
+    margin-top: 4px;
+}
+
+.linkMenuImg {
+    border-radius: 100%;
+}
+
+.menuSlogan {
+    border-bottom: solid #fff 1px;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.menuSlogan p {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.mobileLinkListWrapper {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobileLinkList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-transform: uppercase;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobileLink {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 1rem 0;
+    border-radius: 500px;
+    margin: 0.5rem auto;
+    cursor: pointer;
+    text-align: center;
+    width: 40%;
+}
+
+.mobileLink:hover {
+    background-color: #fff3;
+}
+
+.mobileLink.active {
+    background-color: #fff3;
+}
+
+.mobileLinkUl {
+    padding-top: 1rem;
+}
+
+.socialContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.socialIcon {
+    border-radius: 100%;
+    background-color: #fff3;
+    padding: 9px 12px;
+    cursor: pointer;
+    transition: 150ms ease-in;
+}
+
+.socialIcon:hover {
+    scale: 110%;
+}
+
+.socialIcon svg {
+    margin-top: 2px;
+    height: 20px;
+    width: 20px;
+}
+
+@media screen and (min-width: 640px) {
+    .socialContainer {
+        padding: 0 3rem;
+    }
+
+    .linksOpened {
+        width: 65%;
+    }
+
+    .socialContainer {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .openMenu,
+    .linksOpened,
+    .linksOpenedBG,
+    .linksClosed,
+    .linksClosedBG {
+        visibility: hidden;
+    }
+}
