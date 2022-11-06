@@ -1,6 +1,3 @@
-// client_id: tkbip8ll0kn2lp3umx4j687lco1r6p
-// https://api.twitch.tv/helix/streams?client_id=tkbip8ll0kn2lp3umx4j687lco1r6p&user_login=JustJavahound
-
 import type { NextApiRequest, NextApiResponse } from 'next'
 import TwitchProvider from 'next-auth/providers/twitch'
 
@@ -49,6 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const streamJson = await get(`https://api.twitch.tv/helix/streams?user_id=${userId}`)
     if (streamJson.data.length <= 0) {
         res.status(600).json({message: "Stream is offline"})
+        return
     }
     const isLive = streamJson.data[0].type === "live"
     const viewerCount = streamJson.data[0].viewer_count

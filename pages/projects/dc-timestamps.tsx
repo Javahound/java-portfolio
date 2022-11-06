@@ -123,13 +123,6 @@ const TimestampGenerator = ({ keywords, description }) => {
         }
         return { duration: diff, unit: 'seconds' };
     }
-
-    var time = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -3)
-    var longTime = new Date(date).toISOString().split('T')[1].split('.')[0].slice(0, -2) + "00"
-
-    var shortTime = "time_short"
-
-    var app
     
     updateOutputPreview()
 

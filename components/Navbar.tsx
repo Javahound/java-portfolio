@@ -1,4 +1,4 @@
-import Image from 'next/Image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
@@ -15,9 +15,9 @@ function Navbar() {
 
     return (
         <>
-            <nav className={styles.nav}>
+            <nav className={styles.nav} style={ nav ? {backdropFilter: `none`} : {backdropFilter: `blur(10px)`} }>
                 <div className={styles.flex}>
-                    <Image src={'/logo.png'} alt={''} width={50} height={50} className={styles.navLogo}/>
+                    <Image src={'/logo.png'} alt={''} width={50} height={50} className={styles.navLogo} style={{}}/>
                     <h2 className='gradientText'>Javahound</h2>
                     <div onClick={toggleNav} className={styles.openMenu}>
                         <AiOutlineMenu size={25} />
@@ -28,7 +28,7 @@ function Navbar() {
                         <div>
                             <div className={styles.linkMenuHeader}>
                                 <Image src="/logo.png" alt="/" width='75' height='75' className={styles.linkMenuImg}></Image>
-                                <h2><span className="invisible xs:visible font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7]">Javahound</span></h2>
+                                <h2><span className={"gradientText textNormal"}>Javahound</span></h2>
                                 <div onClick={toggleNav} className={styles.menuCloseBtn}>
                                     <AiOutlineClose size={25} />
                                 </div>
