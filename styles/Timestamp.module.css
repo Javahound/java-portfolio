@@ -1,0 +1,71 @@
+.main {
+    width: 95vw;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: .5rem;
+    display: flex;
+    justify-items: center;
+}
+
+.alignment {
+    margin-top: 10rem;
+}
+
+.container {
+    background-color: #FFF2;
+    border-radius: 25px;
+    padding: 2rem 0;
+    transition: 200ms ease-in;
+    display: block;
+    width: 100%;
+    align-items: center;
+}
+
+.container:hover {
+    transition: 200ms ease-in;
+    cursor: pointer;
+}
+
+.form_row {
+    display: flex;
+    padding: .5rem 2rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form_row > p, .form_row > input, .form_row > select {
+    width: 50%;
+}
+
+.form_row input, .form_row select {
+    padding: 0 .5rem;
+}
+
+.input {
+    background-color: #22212b;
+    border-radius: 25px;
+    border: transparent .125rem solid;
+}
+
+.out_pre {
+    display: flex;
+    padding: .5rem 2rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media screen and (max-width: 550px) {
+    .out_pre {
+        display: flex;
+        flex-direction: row;
+        padding: .5rem 2rem;
+        justify-content: space-between;
+        width: 100%;
+        text-align: center;
+    }
+
+    .out_pre > p{
+        width: 100%;
+    }
+}

@@ -14,14 +14,13 @@ export default function TwitchStatus() {
             const data = await fetch('/api/checkStreamOnline')
             const json = await data.json()
             setIsLive(json.isLive)
-            console.log(json)
             return json
         }
 
         getData()
         var interval = setInterval(() => {
             getData()
-        }, 120000)
+        }, 6000000)
          interval
 
          

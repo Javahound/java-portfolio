@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const tokenJson = await tokenResponse.json()
 
     if(!tokenResponse.ok) {
-        console.error(tokenJson)
+        console.error('Error with Token: ' + tokenJson)
     }
 
     const get = buildGet(tokenJson.access_token)
@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const streamJson = await get(`https://api.twitch.tv/helix/streams?user_id=${userId}`)
     if (streamJson.data.length <= 0) {
-        res.status(600).json({message: "Stream is offline"})
+        res.status(200).json({message: "Stream is offline"})
         return
     }
     const isLive = streamJson.data[0].type === "live"
