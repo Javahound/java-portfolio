@@ -101,19 +101,19 @@ const TimestampGenerator = ({ keywords, description }) => {
         const diff = -((new Date().getTime() - d.getTime())/1000)|0;
         const absDiff = Math.abs(diff);
         if (absDiff > 86400*30*10) {
-            return { duration: Math.round(diff/(86400*365)), unit: 'years' };
+            return Math.round(diff/(86400*365)) == 1 ? { duration: Math.round(diff/(86400*365)), unit: 'year' } : { duration: Math.round(diff/(86400*365)), unit: 'years' };
         }
         if (absDiff > 86400*25) {
-            return { duration: Math.round(diff/(86400*30)), unit: 'months' };
+            return Math.round(diff/(86400*30)) == 1 ? { duration: Math.round(diff/(86400*30)), unit: 'month' } : { duration: Math.round(diff/(86400*30)), unit: 'monts' };
         }
         if (absDiff > 3600*21) {
-            return { duration: Math.round(diff/86400), unit: 'days' };
+            return Math.round(diff/86400) == 1 ? { duration: Math.round(diff/86400), unit: 'day' } : { duration: Math.round(diff/86400), unit: 'days' };
         }
         if (absDiff > 60*44) {
-            return { duration: Math.round(diff/3600), unit: 'hours' };
+            return Math.round(diff / 3600) == 1 ? { duration: Math.round(diff/3600), unit: 'hour' } : { duration: Math.round(diff/3600), unit: 'hours' };
         }
         if (absDiff > 30) {
-            return { duration: Math.round(diff/60), unit: 'minutes' };
+            return Math.round(diff / 60) == 1 ? { duration: Math.round(diff/60), unit: 'minute' } : { duration: Math.round(diff/60), unit: 'minutes' };
         }
         return { duration: diff, unit: 'seconds' };
     }
@@ -162,39 +162,23 @@ const TimestampGenerator = ({ keywords, description }) => {
                                 </select>
                             </div>
                             <div className={styles.out_pre}>
-                                <p>Output preview (24h):</p>
-                                <p id="outPreview" className="right bg-[#40444b] min-w-fit py-2 px-2 rounded-md">{outPreview}</p>
+                                <p id="outPreText" className={styles.outPreText}>Output preview (24h):</p>
+                                <p id="outPreview" style={{background: "#545961", padding: ".5rem 2rem", borderRadius: ".375rem", textAlign: "center"}}>{outPreview}</p>
                             </div>
                             <h2 className="gradientText">Output</h2>
+                            <div className={styles.flex}>
+                                <input type="text" readOnly defaultValue={output} name="" id="" className={styles.output} />
+                                <button className={styles.button} onClick={copy}>Copy</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
-                <div>
-                    <div>
-                        <div>
-                            <div className="md:flex ">
-                                <div className="-mt-4 mb-4 px-4 xs:px-8 max-w-[1200px]">
-                                    <div className="xsm:flex my-2 mx-2">
-                                        <p className="xsm:text-left left w-full py-2 px-4">Output Preview (24h)</p>
-                                        <p id="outPreview" className="right bg-[#40444b] min-w-fit py-2 px-2 rounded-md">{outPreview}</p>
-                                    </div>
-                                    <h2 className="mt-12 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#576ad2] to-[#b075e7] gradient-move">Output</h2>
-                                    <div className="flex">
-                                        <input type="text" value={output} name="" id="" className="right bg-[#22212b] w-[70%] py-2 px-4 rounded-3xl mx-auto" />
-                                        <button className="w-[20%] shadow-transparent mx-auto bg-gradient-to-r from-[#4856a8] to-[#8b5cb8]" onClick={copy}>Copy</button>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
         </>
     )
 }
-
 
 TimestampGenerator.defaultProps = {
     keywords: 'javahound, furry, vr, vrfurry, vr furry, content creation, web development, programming, discord, dc, timestamps, dc timestamps, discord timestamps, timestamp, dc timestamp, discord timestamp',
