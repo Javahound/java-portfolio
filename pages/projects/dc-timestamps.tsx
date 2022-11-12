@@ -5,12 +5,13 @@ import Script from 'next/script'
 import Notiflix from "notiflix"
 
 var localDate = new Date()
+var timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
 var timeDiff = localDate.getTimezoneOffset()
 var startDate = new Date(localDate.getTime())
 var timeField = new Date(localDate.getTime() - (timeDiff * 60 * 1000))
 var date = new Date(startDate.getTime() + 60000)
 var valueDate = new Date().toISOString().split('T')[0]
-var valueTime = new Date(timeField.getTime() + 60000).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+var valueTime = new Date(date.getTime() + timezoneOffset).toISOString().split('T')[1].split('.')[0].slice(0, -3)
 var outPreview = "in 1 minute"
 
 const TimestampGenerator = ({ keywords, description }) => {
