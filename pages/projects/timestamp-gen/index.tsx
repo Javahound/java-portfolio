@@ -5,9 +5,10 @@ import Head from "next/head"
 import styles from '../../../styles/Timestamp.module.css'
 
 var startDate = new Date()
-var date = new Date(startDate.getTime() + 60000)
+var timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
+var date = new Date(startDate.getTime() + timezoneOffset)
 var valueDate = new Date().toISOString().split('T')[0]
-var valueTime = new Date(date.getTime() + 60000).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+var valueTime = new Date(date.getTime() + timezoneOffset).toISOString().split('T')[1].split('.')[0].slice(0, -3)
 var outPreview
 
 const TimestampGenerator = ({ keywords, description }) => {
@@ -92,8 +93,13 @@ const TimestampGenerator = ({ keywords, description }) => {
         const ts = selectedDate.getTime().toString()
         result = `<t:${ts.substring(0, ts.length - 3)}:${select}>`
         setOutput(result)
-        navigator.clipboard.writeText(result.toString())
-        Notiflix.Notify.success('Copied to clipboard.')
+        navigator.clipboard.writeText(result.toString()).then(
+            () => {
+                Notiflix.Notify.success('Copied to clipboard.')
+            }).catch(() => {
+                Notiflix.Notify.failure('Failed to copy to clipboard.')
+            })
+        
     }
 
     function automaticRelativeDifference(valueDate) {
@@ -122,60 +128,59 @@ const TimestampGenerator = ({ keywords, description }) => {
 
     return (
         <>
-        <meta name='keywords' content={keywords} />
-        <meta name='description' content={description} />
-        <div className="min-w-full h-screen text-center">
-            <Head>
-                <title>Timestamp Gen - Javahound</title>
-                <meta
-                    name="Discord Timestamp Generator"
-                    content="Generate dynamic Discord timestamps with ease :3"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <main>
-                <div className={styles.main}>
-                    <div className={styles.alignment}>
-                        <div className={styles.container}>
-                            <h1 className="gradientText">DC Timestamp Generator</h1>
-                            <div className={styles.form_row} id="dateIn">
-                                <p>Date:</p>
-                                <input type="date" id="date" value={dateIn} data-date-format className={styles.input}
-                                        onChange={(e) => { setDate(e.target.value); changeDate(e); updateOutput;}}  />
-                            </div>
-                            <div className={styles.form_row} id="timeIn">
-                                <p>Time:</p>
-                                <input type="time" id="time" value={timeIn} className={styles.input}
-                                        onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput;}} />
-                            </div>
-                            <div className={styles.form_row}>
-                                <p>Format:</p>
-                                <select name="type" id="type" value={select} defaultValue='R'
-                                        onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutput();}} className={styles.input} >
-                                    <option value="t">Short Time</option>
-                                    <option value="T">Long Time</option>
-                                    <option value="d">Short Date</option>
-                                    <option value="D">Long Date</option>
-                                    <option value="f">Long Date + Time</option>
-                                    <option value="F">Day + Date + Time</option>
-                                    <option value="R" selected>Relative</option>
-                                </select>
-                            </div>
-                            <div className={styles.out_pre}>
-                                <p id="outPreText" className={styles.outPreText}>Output preview (24h):</p>
-                                <p id="outPreview" style={{background: "#545961", padding: ".5rem 2rem", borderRadius: ".375rem", textAlign: "center"}}>{outPreview}</p>
-                            </div>
-                            <h2 className="gradientText">Output</h2>
-                            <div className={styles.flex}>
-                                <input type="text" readOnly defaultValue={output} name="" id="" className={styles.output} />
-                                <button className={styles.button} onClick={copy}>Copy</button>
+            <meta name='keywords' content={keywords} />
+            <meta name='description' content={description} />
+            <div className="min-w-full h-screen text-center">
+                <Head>
+                    <title>Timestamp Gen - Javahound</title>
+                    <meta
+                        name="Discord Timestamp Generator"
+                        content="Generate dynamic Discord timestamps with ease :3"
+                    />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <main>
+                    <div className={styles.main}>
+                        <div className={styles.alignment}>
+                            <div className={styles.container}>
+                                <h1 className="gradientText">DC Timestamp Generator</h1>
+                                <div className={styles.form_row} id="dateIn">
+                                    <p>Date:</p>
+                                    <input type="date" id="date" value={dateIn} data-date-format className={styles.input}
+                                            onChange={(e) => { setDate(e.target.value); changeDate(e); updateOutput;}}  />
+                                </div>
+                                <div className={styles.form_row} id="timeIn">
+                                    <p>Time:</p>
+                                    <input type="time" id="time" value={timeIn} className={styles.input}
+                                            onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput;}} />
+                                </div>
+                                <div className={styles.form_row}>
+                                    <p>Format:</p>
+                                    <select name="type" id="type" value={select} defaultValue='R'
+                                            onChange={ (e) => {setSelect(e.target.value); changeSelect(e); updateOutput();}} className={styles.input} >
+                                        <option value="t">Short Time</option>
+                                        <option value="T">Long Time</option>
+                                        <option value="d">Short Date</option>
+                                        <option value="D">Long Date</option>
+                                        <option value="f">Long Date + Time</option>
+                                        <option value="F">Day + Date + Time</option>
+                                        <option value="R" selected>Relative</option>
+                                    </select>
+                                </div>
+                                <div className={styles.out_pre}>
+                                    <p id="outPreText" className={styles.outPreText}>Output preview (24h):</p>
+                                    <p id="outPreview" style={{background: "#545961", padding: ".5rem 2rem", borderRadius: ".375rem", textAlign: "center"}}>{outPreview}</p>
+                                </div>
+                                <h2 className="gradientText">Output</h2>
+                                <div className={styles.flex}>
+                                    <input type="text" readOnly defaultValue={output} name="" id="" className={styles.output} />
+                                    <button className={styles.button} onClick={copy}>Copy</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
             </div>
-            
         </>
     )
 }

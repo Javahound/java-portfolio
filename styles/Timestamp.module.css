@@ -69,6 +69,7 @@
 .flex {
     display: flex;
     padding: 0 1rem;
+    pointer-events: all;
 }
 
 .out_pre > .aaa {
