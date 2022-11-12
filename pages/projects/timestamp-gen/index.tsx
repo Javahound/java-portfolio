@@ -6,7 +6,7 @@ import styles from '../../../styles/Timestamp.module.css'
 
 var startDate = new Date()
 var timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
-var date = new Date(startDate.getTime() + timezoneOffset)
+var date = new Date(startDate.getTime() + 60000)
 var valueDate = new Date().toISOString().split('T')[0]
 var valueTime = new Date(date.getTime() + timezoneOffset).toISOString().split('T')[1].split('.')[0].slice(0, -3)
 var outPreview
