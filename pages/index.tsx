@@ -3,18 +3,20 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import getTimeSinceDate from '../utils/DateHandler'
 import TwitchStatus from '../components/TwitchStatus'
+import Image from 'next/image'
 
 function Home() {
     const [windowHeight, setWindowHeight] = useState(1080)
-    const [picRight, setPicRight] = useState(windowHeight * 0.7)
+    const [picRight, setPicRight] = useState(windowHeight * 0.65)
     const [picTop, setPicTop] = useState(0)
     const [scrollY, setScrollY] = useState(-1)
     const [backgroundBlur, setBackgroundBlur] = useState(0)
     const [opacity, setOpacity] = useState(0)
     const [transitionTime, setTransitionTime] = useState(0)
+    const imgWidth: number = Math.round(windowHeight * 1.77777778)
 
     const handleScroll = () => {
-        setTransitionTime(1000)
+        setTransitionTime(500)
         setScrollY(window.scrollY)
     }
 
@@ -85,19 +87,20 @@ function Home() {
 
             <main className={styles.main}>
                 <header className="heightFull">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                         className="background"
                         style={{
                             filter: `blur(${backgroundBlur}px)`,
                             opacity: `${opacity}%`,
                             right: `-${picRight}px`,
                             top: `0px`,
-                            transition: `${transitionTime}ms ease-out`,
+                            transition: `${transitionTime}ms ease-in-out`,
                         }}
                         src={'/avtrPicFull.png'}
+                        quality={90}
                         alt={''}
                         height={`${windowHeight}`}
+                        width={`${imgWidth}`}
                     />
                 </header>
                 
@@ -107,7 +110,7 @@ function Home() {
                 >
                     <h2 style={{ margin: `26px 0 5px 0` }}>Javahound</h2>
                     <h3 className="spacingWide">
-                        Full Stack Dev, creator, <br />
+                        Full Stack Dev, creator,
                         Furry, VR Enthusiast
                     </h3>
                     <br />

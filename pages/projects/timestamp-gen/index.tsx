@@ -1,8 +1,9 @@
-import React, { useEffect } from "react"
+import React from "react"
 import useState from 'react-usestateref'
 import Notiflix from "notiflix"
 import Head from "next/head"
 import styles from '../../../styles/Timestamp.module.css'
+import { WebsiteName } from "../../../utils/WebsiteName"
 
 var startDate = new Date()
 var timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
@@ -132,7 +133,7 @@ const TimestampGenerator = ({ keywords, description }) => {
             <meta name='description' content={description} />
             <div className="min-w-full h-screen text-center">
                 <Head>
-                    <title>Timestamp Gen - Javahound</title>
+                    <title>Timestamp Gen {WebsiteName}</title>
                     <meta
                         name="Discord Timestamp Generator"
                         content="Generate dynamic Discord timestamps with ease :3"

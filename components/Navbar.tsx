@@ -15,10 +15,35 @@ function Navbar() {
 
     return (
         <>
-            <nav className={styles.nav} style={ nav ? {backdropFilter: `none`} : {backdropFilter: `blur(10px)`} }>
+            <nav className={styles.nav} style={ nav ? {backdropFilter: `none`} : {backdropFilter: `blur(7px)`} }>
                 <div className={styles.flex}>
-                    <Image src={'/logo.png'} alt={''} width={50} height={50} className={styles.navLogo} style={{}}/>
-                    <h2 className='gradientText'>Javahound</h2>
+                    <Link href='/'>
+                        <Image src={'/logo.png'} alt={''} width={50} height={50} className={styles.navLogo} style={{}}/>
+                    </Link>
+                    <Link href='/'>
+                        <div className={styles.navTitle}>
+                            <h2 className='gradientText'>Javahound</h2>
+                        </div>
+                    </Link>
+                    <div className={styles.links}>
+                        <ul>
+                            <Link href='/'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>Home</li>
+                            </Link>
+                            <Link href='/#about'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>About</li>
+                            </Link>
+                            <Link href='/blog'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>Blog</li>
+                            </Link>
+                            <Link href='/projects'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>Projects</li>
+                            </Link>
+                            <Link href='/'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>Contact</li>
+                            </Link>
+                        </ul>
+                    </div>
                     <div onClick={toggleNav} className={styles.openMenu}>
                         <AiOutlineMenu size={25} />
                     </div>
@@ -45,8 +70,8 @@ function Navbar() {
                                 <Link legacyBehavior href='/#about'>
                                     <li onClick={toggleNav} className={styles.mobileLink}>About</li>
                                 </Link>
-                                <Link legacyBehavior href='/'>
-                                    <li onClick={toggleNav} className={styles.mobileLink}>Skills</li>
+                                <Link legacyBehavior href='/blog'>
+                                    <li onClick={toggleNav} className={styles.mobileLink}>Blog</li>
                                 </Link>
                                 <Link legacyBehavior href='/projects'>
                                     <li onClick={toggleNav} className={styles.mobileLink}>Projects</li>

@@ -47,6 +47,7 @@ main {
     width: 100%;
     backdrop-filter: blur(10px);
     z-index: -1;
+    max-width: 500px;
 }
 
 .heightFull {
@@ -79,7 +80,8 @@ main {
     z-index: -2;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
+
 }
 
 @media (prefers-color-scheme: dark) {

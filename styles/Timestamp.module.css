@@ -80,7 +80,7 @@
 .output {
     background-color: #22212b;
     border-radius: 25px;
-    width: 70%;
+    width: 75%;
     border: transparent .125rem solid;
     height: 52px;
     padding: 0 1rem;
@@ -88,11 +88,12 @@
 }
 
 .button {
-    border-radius: .375rem;
+    border-radius: 25px;
     border: none;
     padding: 0.5rem 1rem;
     width: 20%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: 0;
     background: linear-gradient(90deg, #4856a8 0%, #8b5cb8 100%);
     font-family: 'Orbitron', sans-serif;
 }
