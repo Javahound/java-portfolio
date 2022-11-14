@@ -4,11 +4,10 @@ import styles from '../styles/TwitchPlayer.module.css'
 
 export default function TwitchStatus() { 
 
-    var [isLive, setIsLive] = useState(false)
-    var streamerName = ""
+    let [isLive, setIsLive] = useState(false)
+    let streamerName = ""
     streamerName = "justjavahound"
     
-
     useEffect(() => {
         const getData = async () => {
             const data = await fetch('/api/checkStreamOnline')
@@ -18,12 +17,9 @@ export default function TwitchStatus() {
         }
 
         getData()
-        var interval = setInterval(() => {
+        let interval = setInterval(() => {
             getData()
-        }, 6000000)
-         interval
-
-         
+        }, 6000000)         
 
         return () => {
             
@@ -31,7 +27,7 @@ export default function TwitchStatus() {
 
     }, [])
 
-    var playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost`
+    let playerLink = `https://player.twitch.tv/?channel=${streamerName}&parent=localhost`
 
     return (
         <>

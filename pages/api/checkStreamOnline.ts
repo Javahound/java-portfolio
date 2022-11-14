@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import TwitchProvider from 'next-auth/providers/twitch'
 
 const client_id = process.env.TWITCH_CLIENT_ID
 const client_secret = process.env.TWITCH_CLIENT_SECRET
 
-function buildGet(accessToken: String) {
+function buildGet(accessToken: string) {
     return async function get(endpoint:string) {
         const headers = new Headers()
         headers.set("Authorization", `Bearer ${accessToken}`)
@@ -40,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const get = buildGet(tokenJson.access_token)
 
     const userJson = await get(`https://api.twitch.tv/helix/users?login=justjavahound`)
-    const viewCount = userJson.data[0].view_count
+
     const userId = userJson.data[0].id
 
     const streamJson = await get(`https://api.twitch.tv/helix/streams?user_id=${userId}`)

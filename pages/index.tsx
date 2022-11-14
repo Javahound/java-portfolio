@@ -8,7 +8,6 @@ import Image from 'next/image'
 function Home() {
     const [windowHeight, setWindowHeight] = useState(1080)
     const [picRight, setPicRight] = useState(windowHeight * 0.65)
-    const [picTop, setPicTop] = useState(0)
     const [scrollY, setScrollY] = useState(-1)
     const [backgroundBlur, setBackgroundBlur] = useState(0)
     const [opacity, setOpacity] = useState(0)
@@ -46,7 +45,6 @@ function Home() {
             opacityVar = 0
             setOpacity(opacityVar)
         }
-        scrollY <= 300 ? setPicTop(0) : setPicTop(0 - (scrollY - 300) / 3)
         if (scrollY > 250) {
             backgroundBlurVar >= 10 * 4
                 ? setBackgroundBlur(10)

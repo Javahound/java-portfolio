@@ -5,21 +5,21 @@ import Head from "next/head"
 import styles from '../../../styles/Timestamp.module.css'
 import { WebsiteName } from "../../../utils/WebsiteName"
 
-var startDate = new Date()
-var timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
-var date = new Date(startDate.getTime() + 60000)
-var valueDate = new Date().toISOString().split('T')[0]
-var valueTime = new Date(date.getTime() + timezoneOffset).toISOString().split('T')[1].split('.')[0].slice(0, -3)
-var outPreview
+let startDate = new Date()
+let timezoneOffset = (new Date().getTimezoneOffset() * 60000) * -1
+let date = new Date(startDate.getTime() + 60000)
+let valueDate = new Date().toISOString().split('T')[0]
+let valueTime = new Date(date.getTime() + timezoneOffset).toISOString().split('T')[1].split('.')[0].slice(0, -3)
+let outPreview
 
 const TimestampGenerator = ({ keywords, description }) => {
-    var [select,setSelect] = useState('R')
-    var [timeIn, setTime] = useState(valueTime)
-    var [dateIn, setDate] = useState(valueDate)
-    var [output , setOutput] = useState('')
-    var result
+    let [select,setSelect] = useState('R')
+    let [timeIn, setTime] = useState(valueTime)
+    let [dateIn, setDate] = useState(valueDate)
+    let [output , setOutput] = useState('')
+    let result
 
-    var newDate
+    let newDate
     function changeTime(e) {
         setTime(e.target.value)
         timeIn = e.target.value
@@ -52,29 +52,27 @@ const TimestampGenerator = ({ keywords, description }) => {
             outPreview = timeIn + ":00"
         }
         if (select == 'd') {
-            var parts = dateIn.split('-')
-            var dateParts = parts[1] + "/" + parts[2] + "/" + parts[0]
+            let parts = dateIn.split('-')
+            let dateParts = parts[1] + "/" + parts[2] + "/" + parts[0]
             outPreview = dateParts
         }
         if (select == 'D') {
-            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
-            var longDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
+            let newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            let longDate = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(newLongDate)
             outPreview = longDate
         }
         if (select == 'f') {
-            var parts = dateIn.split('-')
-            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
-            var dateTime = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
+            let newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            let dateTime = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
             outPreview = dateTime
         }
         if (select == 'F') {
-            var parts = dateIn.split('-')
-            var newLongDate = new Date(dateIn + "T" + timeIn + ":00")
-            var dateTime = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
+            let newLongDate = new Date(dateIn + "T" + timeIn + ":00")
+            let dateTime = new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(newLongDate)
             outPreview = dateTime
         }
         if (select == 'R') {
-            var diff = automaticRelativeDifference(date)
+            let diff = automaticRelativeDifference(date)
             outPreview = "in " + diff.duration + " " + diff.unit
         }  
     }   
@@ -104,7 +102,7 @@ const TimestampGenerator = ({ keywords, description }) => {
     }
 
     function automaticRelativeDifference(valueDate) {
-        var d = new Date(valueDate)
+        let d = new Date(valueDate)
         const diff = -((new Date().getTime() - d.getTime())/1000)|0;
         const absDiff = Math.abs(diff);
         if (absDiff > 86400*30*10) {
@@ -148,12 +146,12 @@ const TimestampGenerator = ({ keywords, description }) => {
                                 <div className={styles.form_row} id="dateIn">
                                     <p>Date:</p>
                                     <input type="date" id="date" value={dateIn} data-date-format className={styles.input}
-                                            onChange={(e) => { setDate(e.target.value); changeDate(e); updateOutput;}}  />
+                                            onChange={(e) => { setDate(e.target.value); changeDate(e); updateOutput();}}  />
                                 </div>
                                 <div className={styles.form_row} id="timeIn">
                                     <p>Time:</p>
                                     <input type="time" id="time" value={timeIn} className={styles.input}
-                                            onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput;}} />
+                                            onChange={(e) => {setTime(e.target.value); changeTime(e); updateOutput();}} />
                                 </div>
                                 <div className={styles.form_row}>
                                     <p>Format:</p>
