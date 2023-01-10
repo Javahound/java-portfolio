@@ -33,14 +33,14 @@ function Navbar() {
                             <Link href='/#about'>
                                 <li className='ml-10 text-sm uppercase hover:border-b'>About</li>
                             </Link>
-                            <Link href='/blog'>
-                                <li className='ml-10 text-sm uppercase hover:border-b'>Blog</li>
-                            </Link>
                             <Link href='/projects'>
                                 <li className='ml-10 text-sm uppercase hover:border-b'>Projects</li>
                             </Link>
                             <Link href='/'>
                                 <li className='ml-10 text-sm uppercase hover:border-b'>Contact</li>
+                            </Link>
+                            <Link href='/login'>
+                                <li className='ml-10 text-sm uppercase hover:border-b'>Login</li>
                             </Link>
                         </ul>
                     </div>
@@ -70,14 +70,14 @@ function Navbar() {
                                 <Link legacyBehavior href='/#about'>
                                     <li onClick={toggleNav} className={styles.mobileLink}>About</li>
                                 </Link>
-                                <Link legacyBehavior href='/blog'>
-                                    <li onClick={toggleNav} className={styles.mobileLink}>Blog</li>
-                                </Link>
                                 <Link legacyBehavior href='/projects'>
                                     <li onClick={toggleNav} className={styles.mobileLink}>Projects</li>
                                 </Link>
                                 <Link legacyBehavior href='/'>
                                     <li onClick={toggleNav} className={styles.mobileLink}>Contact</li>
+                                </Link>
+                                <Link legacyBehavior href='/login'>
+                                    <li onClick={toggleNav} className={styles.mobileLink}>Login</li>
                                 </Link>
                             </ul>
                             <div className={styles.mobileLinkUl}>

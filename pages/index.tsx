@@ -119,7 +119,7 @@ function Home() {
                         I am a gay doggo on the interwebs :3 <br />
                         Also a part time Femboy <br />
                         Demi / Gay | {timeSinceBirth} | <b>They</b> /{' '}
-                        <b>Them</b> | Taken <br />
+                        <b>Them</b> | Single <br />
                         Java, Web, C#, Typescript Dev
                     </p>
                     <br />
